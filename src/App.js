@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import { useSpring, animated } from "react-spring";
 
@@ -19,9 +18,9 @@ function App() {
 
     const perspective = (x, y, s) =>
         `perspective(500px) 
-   rotateX(${x}deg) 
-   rotateY(${y}deg) 
-   scale(${s})`;
+            rotateX(${x*2}deg) 
+            rotateY(${y*2}deg) 
+            scale(${s})`;
 
     const calcXY = (x, y) => [-(y - window.innerHeight / 2) / 15, (x - window.innerWidth / 2) / 15, 1.0];
 
@@ -31,10 +30,11 @@ function App() {
                 {/* <img src={logo} className="App-logo" alt="logo" /> */}
                 <animated.h1 style={fade}>Hello</animated.h1>
                 <button onClick={() => setIsToggled(!isToggled)}>Toggle</button>
-                <br/>
-                <br/>
-                <br/>
-                <animated.div  className='card'
+                <br />
+                <br />
+                <br />
+                <animated.div
+                    className="card"
                     onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calcXY(x, y) })}
                     onMouseLeave={() => set({ xys: [0, 0, 0.5] })}
                     style={{ transform: props.xys.interpolate(perspective) }}
