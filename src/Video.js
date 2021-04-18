@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Grid, AppBar, Toolbar, Typography, Box, IconButton, Button } from "@material-ui/core";
-import "./App.css";
-import MenuIcon from "@material-ui/icons/Menu";
-import { makeStyles } from "@material-ui/core/styles";
+import { Grid, Button } from "@material-ui/core";
 import * as cocoSsd from "@tensorflow-models/coco-ssd";
 import * as tf from "@tensorflow/tfjs";
 import Webcam from "react-webcam";
@@ -19,10 +16,8 @@ function Video() {
         try {
             const model = await cocoSsd.load();
             setModel(model);
-            console.log("setloadedModel");
         } catch (err) {
             console.log(err);
-            console.log("failed load model");
         }
     }
 
@@ -89,44 +84,44 @@ function Video() {
                     alignItems: "center",
                     justifyContent: "center",
                     display: "flex",
-                    padding: 0,
+                    padding: 20,
                 }}
             >
-           
-                    <Button
-                        variant={"contained"}
-                        style={{ 
-                            position: "absolute", top: "100px",
-                            color: "white",
-                            backgroundColor: "blueviolet",
-                            width: "50%",
-                            maxWidth: "250px",
-                        }}
-                        onClick={() => {
-                            predictionFunction();
-                        }}
-                    >
-                        Start Detect
-                    </Button>
+                <Button
+                    variant={"contained"}
+                    style={{
+                        position: "absolute",
+                        top: "100px",
+                        color: "white",
+                        backgroundColor: "blueviolet",
+                    }}
+                    onClick={() => {
+                        predictionFunction();
+                    }}
+                >
+                    Start Detect
+                </Button>
 
-                    <div style={{ position: "absolute", top: "200px", zIndex: "9999" }}>
-                        <canvas
-                            id="myCanvas"
-                            width={videoWidth}
-                            height={videoHeight}
-                            style={{ backgroundColor: "transparent" }}
-                        />
-                    </div>
-                    <div style={{ position: "absolute", top: "200px" }}>
-                        <Webcam
-                            audio={false}
-                            id="img"
-                            ref={webcamRef}
-                            screenshotQuality={1}
-                            screenshotFormat="image/jpeg"
-                            videoConstraints={videoConstraints}
-                        />
-                    </div>
+                <div style={{ position: "absolute", top: "200px", zIndex: "9999" }}>
+                    <canvas
+                        id="myCanvas"
+                        width={videoWidth}
+                        height={videoHeight}
+                        style={{ backgroundColor: "transparent" }}
+                    />
+                </div>
+
+                <div style={{ position: "absolute", top: "200px" }}>
+                    <Webcam
+                        audio={false}
+                        id="img"
+                        ref={webcamRef}
+                        screenshotQuality={1}
+                        screenshotFormat="image/jpeg"
+                        videoConstraints={videoConstraints}
+                    />
+                </div>
+
                 <Grid item xs={12} md={12}></Grid>
             </Grid>
         </>
