@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import { useSpring, animated } from "react-spring";
+import Comment from "./Comment";
 
 function App() {
     const [isToggled, setIsToggled] = useState(false);
@@ -27,6 +28,7 @@ function App() {
     return (
         <div className="App">
             <header className="App-header">
+                <Comment />
                 <animated.h1 style={fade}>Hello</animated.h1>
                 <button onClick={() => setIsToggled(!isToggled)}>Toggle</button>
                 <br />
