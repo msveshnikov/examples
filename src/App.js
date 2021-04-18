@@ -18,8 +18,8 @@ function App() {
 
     const perspective = (x, y, s) =>
         `perspective(500px) 
-            rotateX(${x*2}deg) 
-            rotateY(${y*2}deg) 
+            rotateX(${x * 2}deg) 
+            rotateY(${y * 2}deg) 
             scale(${s})`;
 
     const calcXY = (x, y) => [-(y - window.innerHeight / 2) / 15, (x - window.innerWidth / 2) / 15, 1.0];
@@ -27,7 +27,6 @@ function App() {
     return (
         <div className="App">
             <header className="App-header">
-                {/* <img src={logo} className="App-logo" alt="logo" /> */}
                 <animated.h1 style={fade}>Hello</animated.h1>
                 <button onClick={() => setIsToggled(!isToggled)}>Toggle</button>
                 <br />
