@@ -29,11 +29,12 @@ function App() {
     return (
         <div className="App">
             <header className="App-header">
-                <Comment />
+                <Object />
+                <br />
+                <br />
+                <br />
                 <animated.h1 style={fade}>Hello</animated.h1>
                 <button onClick={() => setIsToggled(!isToggled)}>Toggle</button>
-                <br />
-                <br />
                 <br />
                 <animated.div
                     className="card"
@@ -41,7 +42,7 @@ function App() {
                     onMouseLeave={() => set({ xys: [0, 0, 0.5] })}
                     style={{ transform: props.xys.interpolate(perspective) }}
                 />
-                <Object />
+                <Comment />
             </header>
         </div>
     );

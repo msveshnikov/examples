@@ -8,19 +8,6 @@ import * as tf from "@tensorflow/tfjs";
 import Webcam from "react-webcam";
 
 function Video() {
-    const useStyles = makeStyles((theme) => ({
-        root: {
-            flexGrow: 1,
-        },
-        menuButton: {
-            marginRight: theme.spacing(2),
-        },
-        title: {
-            flexGrow: 1,
-        },
-    }));
-    const classes = useStyles();
-
     const webcamRef = React.useRef(null);
 
     const [videoWidth, setVideoWidth] = useState(960);
@@ -78,7 +65,6 @@ function Video() {
 
                     ctx.lineWidth = 3;
                     ctx.stroke();
-
                 }
             }
         }
@@ -94,27 +80,7 @@ function Video() {
     };
 
     return (
-        <div
-            style={{
-                width: "100%",
-                height: "100%",
-                marginTop: -8,
-                backgroundImage:
-                    "radial-gradient( circle 993px at 0.5% 50.5%,  rgba(137,171,245,0.37) 0%, rgba(245,247,252,1) 100.2% )",
-            }}
-        >
-            <AppBar position="static">
-                <Toolbar>
-                    <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-                        <MenuIcon />
-                    </IconButton>
-                    <Typography variant="h6" className={classes.title}>
-                        Object Detection
-                    </Typography>
-                </Toolbar>
-            </AppBar>
-
-            <Box mt={1} />
+        <>
             <Grid
                 container
                 style={{
@@ -123,41 +89,27 @@ function Video() {
                     alignItems: "center",
                     justifyContent: "center",
                     display: "flex",
-                    padding: 20,
+                    padding: 0,
                 }}
             >
-                <Grid
-                    item
-                    xs={12}
-                    md={12}
-                    style={{
-                        justifyContent: "center",
-                        alignItems: "center",
-                        display: "flex",
-                        flexDirection: "column",
-                    }}
-                >
-                    <>
-                        <Box mt={2} />
-                        {
-                            <Button
-                                variant={"contained"}
-                                style={{
-                                    color: "white",
-                                    backgroundColor: "blueviolet",
-                                    width: "50%",
-                                    maxWidth: "250px",
-                                }}
-                                onClick={() => {
-                                    predictionFunction();
-                                }}
-                            >
-                                Start Detect
-                            </Button>
-                        }
-                        <Box mt={2} />{" "}
-                    </>
-                    <div style={{ position: "absolute", top: "400px", zIndex: "9999" }}>
+           
+                    <Button
+                        variant={"contained"}
+                        style={{ 
+                            position: "absolute", top: "100px",
+                            color: "white",
+                            backgroundColor: "blueviolet",
+                            width: "50%",
+                            maxWidth: "250px",
+                        }}
+                        onClick={() => {
+                            predictionFunction();
+                        }}
+                    >
+                        Start Detect
+                    </Button>
+
+                    <div style={{ position: "absolute", top: "200px", zIndex: "9999" }}>
                         <canvas
                             id="myCanvas"
                             width={videoWidth}
@@ -165,7 +117,7 @@ function Video() {
                             style={{ backgroundColor: "transparent" }}
                         />
                     </div>
-                    <div style={{ position: "absolute", top: "400px" }}>
+                    <div style={{ position: "absolute", top: "200px" }}>
                         <Webcam
                             audio={false}
                             id="img"
@@ -175,10 +127,9 @@ function Video() {
                             videoConstraints={videoConstraints}
                         />
                     </div>
-                </Grid>
                 <Grid item xs={12} md={12}></Grid>
             </Grid>
-        </div>
+        </>
     );
 }
 
