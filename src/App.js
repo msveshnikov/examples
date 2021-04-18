@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import { useSpring, animated } from "react-spring";
 import Comment from "./Comment";
+import Object from "./Video";
 
 function App() {
     const [isToggled, setIsToggled] = useState(false);
@@ -40,6 +41,7 @@ function App() {
                     onMouseLeave={() => set({ xys: [0, 0, 0.5] })}
                     style={{ transform: props.xys.interpolate(perspective) }}
                 />
+                <Object />
             </header>
         </div>
     );
