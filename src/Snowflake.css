@@ -1,0 +1,17 @@
+.fractal {
+    width: 400px;
+    height: 400px;
+    background: #12d915;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.fractal-branch {
+    width: 70%;
+    height: 70%;
+    background: #c8db20;
+    border-radius: 50%;
+    transform: scale(0.97) rotate(30deg) skew(10deg);
+    opacity: 0.8;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
